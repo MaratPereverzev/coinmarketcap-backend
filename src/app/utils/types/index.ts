@@ -1,4 +1,3 @@
-//api/asset
 interface IAsset {
   id: string;
   rank: string;

@@ -3,16 +3,6 @@ import type { IAsset, SearchParamsType } from "@/utils/types";
 import { dbConnect, getQueryParams } from "@/utils";
 import { NextRequest, NextResponse } from "next/server";
 
-export async function GET(req: NextRequest): Promise<NextResponse> {
-  await dbConnect();
-  const searchParams: URLSearchParams = req.nextUrl.searchParams;
-
-  const query: SearchParamsType = getQueryParams(searchParams);
-
-  const data: IAsset[] = await Assets.find(query);
-  return NextResponse.json({ data });
-}
-
 export async function POST(req: NextRequest): Promise<NextResponse> {
   await dbConnect();
   const userData: IAsset = await req.json();
