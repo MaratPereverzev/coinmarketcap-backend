@@ -1,9 +1,12 @@
-import { NextResponse, NextRequest } from "next/server";
+import Assets from "@/models/assets";
 import { dbConnect } from "@/utils";
 import type { IAsset } from "@/utils/types";
-import Assets from "@/models/assets";
+import { NextRequest, NextResponse } from "next/server";
 
 const projections: string = "-_id -__v";
+const supplementaryInfo: object = {
+  timestamp: Math.floor(Date.now() / 1000),
+};
 
 export async function GET(
   req: NextRequest,
@@ -15,5 +18,5 @@ export async function GET(
     { id: params.id },
     projections
   );
-  return NextResponse.json({ data });
+  return NextResponse.json({ data, ...supplementaryInfo });
 }

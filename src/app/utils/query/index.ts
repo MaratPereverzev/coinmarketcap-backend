@@ -1,13 +1,21 @@
-import { SearchParamsType } from "../types";
+type Indexable = {
+  [index: string | symbol]: any;
+};
 
-const getQueryParams = (searchParamsURL: URLSearchParams): SearchParamsType => {
-  return Array.from(searchParamsURL).reduce(
-    (accum: SearchParamsType, currentValue: string[]): SearchParamsType => {
+const getQueryParams = <T extends Indexable>(
+  searchParamsURL: URLSearchParams
+): T => {
+  const searchParamsArray: [string, string][] = Array.from(searchParamsURL);
+
+  const result = searchParamsArray.reduce(
+    (accum: Indexable, currentValue: [string, string]) => {
       accum[currentValue[0]] = currentValue[1];
       return accum;
     },
-    <SearchParamsType>{}
+    {}
   );
+
+  return result as T;
 };
 
 export { getQueryParams };

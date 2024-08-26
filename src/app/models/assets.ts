@@ -1,7 +1,7 @@
 import mongoose, { Schema } from "mongoose";
 import type { IAsset } from "@/utils/types";
 
-const assetsSchema = new Schema<IAsset>(
+const AssetSchema = new Schema<IAsset>(
   {
     id: { type: String, unique: true, require: true },
     rank: { type: String, default: "null" },
@@ -22,7 +22,6 @@ const assetsSchema = new Schema<IAsset>(
   }
 );
 
-const Assets =
-  mongoose.models?.Assets || mongoose.model("Assets", assetsSchema);
+const Assets = mongoose.models?.Assets || mongoose.model("Assets", AssetSchema);
 
 export default Assets;

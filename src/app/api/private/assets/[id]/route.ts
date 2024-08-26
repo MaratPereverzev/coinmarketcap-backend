@@ -1,7 +1,7 @@
-import { NextResponse, NextRequest } from "next/server";
-import { dbConnect } from "@/utils";
+import { Assets, Histories } from "@/models";
+import { dbConnect, HistoryHandler } from "@/utils";
 import type { IAsset } from "@/utils/types";
-import Assets from "@/models/assets";
+import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(
   req: NextRequest,
@@ -13,6 +13,8 @@ export async function POST(
   let record: IAsset;
   try {
     record = await Assets.create({ ...userData, id: params.id });
+
+    HistoryHandler.createRecord({ id: params.id, priceUsd: userData.priceUsd });
   } catch (err) {
     return NextResponse.json({ message: err }, { status: 400 });
   }
@@ -32,6 +34,8 @@ export async function PUT(
 
   try {
     await Assets.updateOne({ id: params.id }, { ...userData, id: params.id });
+
+    HistoryHandler.createRecord({ id: params.id, priceUsd: userData.priceUsd });
   } catch (err) {
     return NextResponse.json({ message: err }, { status: 400 });
   }
