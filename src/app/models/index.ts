@@ -1,3 +1,4 @@
 import Assets from "./assets";
 import Histories from "./history";
-export { Assets, Histories };
+import Rates from "./rates";
+export { Assets, Histories, Rates };

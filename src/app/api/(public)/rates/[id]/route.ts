@@ -1,12 +1,12 @@
-import Assets from "@/models/assets";
+import type { IRate } from "@/utils";
+import { Rates } from "@/models";
 import { dbConnect } from "@/utils";
-import type { IAsset } from "@/utils/types";
 import { NextRequest, NextResponse } from "next/server";
 
-const projections: string = "-_id -__v";
 const supplementaryInfo: object = {
   timestamp: <number>Date.now(),
 };
+const projections: string = "-_id -__v";
 
 export async function GET(
   req: NextRequest,
@@ -14,9 +14,11 @@ export async function GET(
 ): Promise<NextResponse> {
   await dbConnect();
 
-  const data: IAsset | null = await Assets.findOne(
-    { id: params.id },
-    projections
-  );
+  let data: IRate | null;
+  try {
+    data = await Rates.findOne({ id: params.id }, projections);
+  } catch (err) {
+    return NextResponse.json({ message: err, ...supplementaryInfo });
+  }
   return NextResponse.json({ data, ...supplementaryInfo });
 }

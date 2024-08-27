@@ -7,8 +7,8 @@ abstract class HistoryHandler {
     await Histories.create({
       id: data.id,
       priceUsd: data.priceUsd,
-      timestamp: Math.floor(date / 10000) * 10000,
-      date: new Date(Math.floor(date / 10000) * 10000),
+      timestamp: Math.floor(date / 60000) * 60000,
+      date: new Date(Math.floor(date / 60000) * 60000),
     });
   }
 }

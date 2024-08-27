@@ -7,7 +7,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 const projections: string = "-_id -__v";
 const supplementaryInfo: object = {
-  timestamp: Math.floor(Date.now() / 1000) * 1000,
+  timestamp: <number>Date.now(),
 };
 
 export async function GET(

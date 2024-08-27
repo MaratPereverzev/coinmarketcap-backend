@@ -4,7 +4,7 @@ import { dbConnect, getQueryParams, HistoryHandler } from "@/utils";
 import { NextRequest, NextResponse } from "next/server";
 
 const supplementaryInfo: object = {
-  timestamp: Math.floor(Date.now() / 1000),
+  timestamp: <number>Date.now(),
 };
 
 export async function POST(req: NextRequest): Promise<NextResponse> {
@@ -52,7 +52,7 @@ export async function PUT(req: NextRequest): Promise<NextResponse> {
   }
 
   return NextResponse.json(
-    { message: "The rocord has been updated" },
+    { message: "The record has been updated" },
     { status: 200 }
   );
 }
