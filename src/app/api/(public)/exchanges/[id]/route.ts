@@ -1,5 +1,5 @@
-import { Rates } from "@/models";
-import type { IRate } from "@/utils";
+import { Exchanges } from "@/models";
+import type { IExchange } from "@/utils";
 import { dbConnect } from "@/utils";
 import { NextRequest, NextResponse } from "next/server";
 
@@ -14,9 +14,9 @@ export async function GET(
 ): Promise<NextResponse> {
   await dbConnect();
 
-  let data: IRate | null;
+  let data: IExchange | null;
   try {
-    data = await Rates.findOne({ id: params.id }, projections);
+    data = await Exchanges.findOne({ id: params.id }, projections);
   } catch (err) {
     return NextResponse.json({ message: err, ...supplementaryInfo });
   }
