@@ -1,4 +1,4 @@
-import { Markets } from "@/models";
+import Markets from "@/models/markets";
 import type { IMarket } from "@/utils";
 import { dbConnect } from "@/utils";
 import { NextRequest, NextResponse } from "next/server";

@@ -1,7 +1,6 @@
 import Histories from "@/models/history";
 import { dbConnect, getQueryParams } from "@/utils";
-import { IHistory, HistorySearchType, timestampsValues } from "@/utils/types";
-import { time } from "console";
+import { HistorySearchType, IHistory, timestampsValues } from "@/utils/types";
 
 import { NextRequest, NextResponse } from "next/server";
 
