@@ -14,6 +14,7 @@ const MarketSchema = new Schema<IMarket>({
   percentExchangeVolume: { type: String, default: "null" },
   tradesCount24Hr: { type: String, default: "null" },
   updated: { type: Number, default: Date.now() },
+  volumePercent: { type: String, default: "null" },
 });
 
 const Markets =

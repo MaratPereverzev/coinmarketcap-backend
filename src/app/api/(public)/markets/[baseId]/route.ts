@@ -6,7 +6,7 @@ import { NextRequest, NextResponse } from "next/server";
 const supplementaryInfo: object = {
   timestamp: <number>Date.now(),
 };
-const projections: string = "-_id -__v";
+const projections: string = "-_id -__v -volumePercent";
 
 export async function GET(
   req: NextRequest,

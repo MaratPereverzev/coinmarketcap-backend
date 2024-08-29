@@ -11,6 +11,7 @@ interface IMarket {
   percentExchangeVolume: string;
   tradesCount24Hr: string;
   updated: number;
+  volumePercent: string;
 }
 
 type MarketSearchType = {
