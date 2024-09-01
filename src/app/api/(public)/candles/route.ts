@@ -14,6 +14,6 @@ export async function GET(req: NextRequest): Promise<NextResponse> {
   const searchParams: URLSearchParams = req.nextUrl.searchParams;
   const query = getQueryParams<CandleSearchType>(searchParams);
 
-  const data: ICandle[] = await Candles.find(query);
+  const data: ICandle[] = await Candles.find(query, projections);
   return NextResponse.json({ data, ...supplementaryInfo });
 }

@@ -32,6 +32,7 @@ interface IHistory {
 
 type HistorySearchType = {
   [index: symbol | string]: string | number | undefined;
+  id?: string;
   interval: string;
   start?: number;
   end?: number;

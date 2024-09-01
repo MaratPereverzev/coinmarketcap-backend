@@ -11,6 +11,6 @@ const projections: string = "-_id -__v";
 export async function GET(req: NextRequest): Promise<NextResponse> {
   await dbConnect();
 
-  //const data: IExchange[] = await Exchanges.find({}, projections);
+  const data: IExchange[] = await Exchanges.find({}, projections);
   return NextResponse.json({ data: "ok", ...supplementaryInfo });
 }

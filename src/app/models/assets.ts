@@ -16,7 +16,7 @@ const AssetSchema = new Schema<IAsset>(
     vwap24Hr: { type: String, default: "null" },
   },
   {
-    timestamps: { currentTime: () => Math.floor(Date.now() / 1000) },
+    timestamps: { currentTime: () => Date.now() },
     minimize: false,
     strict: false,
   }
